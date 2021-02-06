@@ -1,25 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import Student from "./Components/Student/Student";
+import Screen from "./Components/Screen/Screen";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    start: false,
+  };
+
+  startGame = () => {
+    this.setState({
+      start: true,
+    });
+  };
+
+  render() {
+    const { start } = this.state;
+    return (
+      <div>{start ? <Student /> : <Screen startGame={this.startGame} />}</div>
+    );
+  }
 }
 
 export default App;
