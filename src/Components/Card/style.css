@@ -1,0 +1,23 @@
+.Card {
+  border: 8px solid #ffbd14;
+  border-radius: 37px;
+  background: linear-gradient(to top, #000000, #2b2a2a);
+  width: 350px;
+  height: 454px;
+  margin: 50px;
+}
+
+.Card__Image {
+  max-width: 300px;
+  max-height: 200px;
+  border-radius: 20px;
+  margin-top: 60px;
+}
+
+.Card__Title {
+  font-size: 30px;
+}
+
+.Card__Text {
+  font-size: 22px;
+}

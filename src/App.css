@@ -1,38 +1,259 @@
-.App {
+@font-face {
+  font-family: "harry";
+  src: url(/src/Fonts/HARRYP__.TTF);
+}
+
+@keyframes stickersMovimentGryffindor {
+  0% {
+    bottom: -150px;
+    left: 350px;
+  }
+
+  25% {
+    bottom: -175px;
+    left: 425px;
+  }
+
+  50% {
+    bottom: -250px;
+    left: 500px;
+  }
+
+  75% {
+    bottom: -150px;
+    left: 550px;
+  }
+
+  100% {
+    bottom: -150px;
+    left: 350px;
+  }
+}
+
+@keyframes stickersMovimentHufflepuff {
+  0% {
+    bottom: -150px;
+    right: -250px;
+  }
+
+  25% {
+    bottom: -150px;
+    right: -350px;
+  }
+
+  50% {
+    bottom: -250px;
+    right: 100px;
+  }
+
+  75% {
+    bottom: -150px;
+    right: 5px;
+  }
+
+  100% {
+    bottom: -150px;
+    right: -250px;
+  }
+}
+
+@keyframes stickersMovimentRavenclaw {
+  0% {
+    top: 150px;
+    right: -50px;
+  }
+
+  25% {
+    top: 150px;
+    right: 150px;
+  }
+
+  50% {
+    top: 50px;
+    right: 100px;
+  }
+
+  75% {
+    top: 75px;
+    right: 5px;
+  }
+
+  100% {
+    top: 150px;
+    right: -50px;
+  }
+}
+
+@keyframes stickersMovimentSlyther {
+  0% {
+    top: 150px;
+    left: 550px;
+  }
+
+  25% {
+    top: 25px;
+    left: 450px;
+  }
+
+  50% {
+    top: 75px;
+    left: 350px;
+  }
+
+  75% {
+    top: 50px;
+    left: 680px;
+  }
+
+  100% {
+    top: 150px;
+    left: 550px;
+  }
+}
+
+@keyframes fogAnimation {
+  0% {
+    opacity: 0;
+  }
+
+  15% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.2;
+  }
+
+  100% {
+    left: -150%;
+    width: 250%;
+    opacity: 0;
+  }
+}
+
+body {
+  background-image: url(/src/Images/mapaDoMaroto.jpg);
+  overflow: hidden;
+}
+
+.Container {
+  position: relative;
+  transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+}
+
+.backgroundContainer {
+  width: 100%;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  background-color: rgb(24, 24, 24);
   color: white;
+  position: fixed;
+  transform: translateY(-50%);
+  top: 50%;
+  height: 70vh;
 }
 
-.App-link {
-  color: #61dafb;
+.Sticker {
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 350px;
+  height: 300px;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Sticker:nth-of-type(1) {
+  background-image: url(/src//Images/GryffindorSticker.png);
+  bottom: -150px;
+  left: 350px;
+  animation-name: stickersMovimentGryffindor;
+  animation-duration: 5s;
+  animation-iteration-count: infinite;
+}
+
+.Sticker:nth-of-type(2) {
+  background-image: url(/src//Images/HufflepuffSticker.png);
+  bottom: -150px;
+  right: -250px;
+  animation-name: stickersMovimentHufflepuff;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+.Sticker:nth-of-type(3) {
+  background-image: url(/src//Images/RavenclawSticker.png);
+  top: 150px;
+  right: -50px;
+  animation-name: stickersMovimentRavenclaw;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+.Sticker:nth-of-type(4) {
+  background-image: url(/src//Images/SlytherinSticker.png);
+  top: 150px;
+  left: 550px;
+  animation-name: stickersMovimentSlyther;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+}
+
+.fogAnimation {
+  background-image: url(/src/Images/fog.png);
+  background-size: 100% 100%;
+  background-repeat: repeat;
+  animation: fogAnimation 15s infinite;
+  position: fixed;
+  opacity: 0.2;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+}
+
+.wandBtn {
+  border: 0;
+  background-color: transparent;
+  outline: none;
+  background-image: url(/src/Images/wand.png);
+  background-size: contain;
+  width: 600px;
+  height: 40px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+.spell {
+  background-image: url(/src/Images/spell.png);
+  background-size: cover;
+  width: 200px;
+  height: 200px;
+  position: relative;
+  left: -125px;
+  top: -89px;
+  opacity: 0;
+  transition: 1s;
+}
+
+.wandBtn:hover .spell {
+  opacity: 1;
+}
+
+.screenTitle {
+  font-family: "harry";
+  font-size: 150px;
+  margin-top: 75px;
+  margin-bottom: 0px;
+}
+
+.screenText {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  margin: 20px 0px 55px 0px;
+}
+
+.cardContainer {
+  display: flex;
+  justify-content: center;
 }

@@ -1,39 +1,41 @@
 import React from "react";
+import Card from "../Card/Card";
 
 class Student extends React.Component {
   state = {
-    students: [],
-    drawnStudent: [],
+    drawnStudents: [],
   };
 
   componentDidMount = () => {
-    const drawnHouses = [];
+    const { students } = this.props;
+    let drawnHouses = [];
+    let countOfDrawn = 0;
 
-    fetch("http://hp-api.herokuapp.com/api/characters/students")
-      .then((response) => response.json())
-      .then((data) =>
-        this.setState({
-          students: [...data]
-            .sort(() => 0.5 - Math.random())
-            .filter((student) => {
-              if (drawnHouses.includes(student.house)) {
-                return "a";
-              }
-              drawnHouses.push(student.house);
-              console.log(drawnHouses);
-            }),
-        })
-      );
+    const studentsAlreadyDrawn = students.filter(({ house }) => {
+      let isDrawn = false;
+      if (!drawnHouses.includes(house) && countOfDrawn < 3) {
+        drawnHouses.push(house);
+        countOfDrawn = countOfDrawn + 1;
+        isDrawn = true;
+      }
+      return isDrawn;
+    });
+
+    this.setState({
+      drawnStudents: studentsAlreadyDrawn,
+    });
   };
 
   render() {
-    const { students, studentsByHouse } = this.state;
     return (
-      <div>
-        {students.map((student) => (
-          <p>
-            {student.name} -- <b>{student.house}</b>
-          </p>
+      <div className="cardContainer">
+        {this.state.drawnStudents.map((student) => (
+          <Card
+            name={student.name}
+            house={student.house}
+            image={student.image}
+            age={student.yearOfBirth !== "" && 1994 - student.yearOfBirth}
+          />
         ))}
       </div>
     );
