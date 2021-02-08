@@ -31,7 +31,6 @@ class App extends React.Component {
 
   render() {
     const { start, students, houses } = this.state;
-    console.log(this.state.students.map((val) => val.name));
     return (
       <div>
         <div className="Sticker"></div>

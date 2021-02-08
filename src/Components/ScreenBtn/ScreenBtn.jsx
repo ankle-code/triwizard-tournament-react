@@ -2,7 +2,7 @@ import React from "react";
 
 class ScreenBtn extends React.Component {
   render() {
-    const { startGame, children } = this.props;
+    const { startGame } = this.props;
     return (
       <div>
         <button className="wandBtn" onClick={startGame}>

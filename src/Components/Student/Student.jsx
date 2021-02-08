@@ -27,9 +27,10 @@ class Student extends React.Component {
   };
 
   render() {
+    const { drawnStudents } = this.state;
     return (
       <div className="cardContainer">
-        {this.state.drawnStudents.map((student) => (
+        {drawnStudents.map((student) => (
           <Card
             name={student.name}
             house={student.house}
